@@ -1,0 +1,63 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-quick-action-panel header="Quick Stage Set Up">
+        <lightning-accordion allow-multiple-sections-open 
+                             active-section-name="A">
+            <lightning-accordion-section name="A" label="Interview Stage Information">
+                <lightning-input type="text" 
+                                 class="validate" 
+                                 label="Stage Name" 
+                                 onchange={handleStageNameChange} 
+                                 required>
+                </lightning-input>
+                <lightning-input type="text" 
+                                label="Number of Interviewers" 
+                                placeholder={numInterviewers} 
+                                onchange={handleNumInterviewersChange}>
+                </lightning-input>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Possible Interviewer Information">
+                <lightning-input type="search"
+                                label="Search Interviewers"
+                                onchange={filterUsers}>
+                </lightning-input>
+                <lightning-dual-listbox name="interviewers"
+                                        class="validate"
+                                        label="Select Possible Interviewers"
+                                        source-label="Available"
+                                        selected-label="Selected"
+                                        field-level-help="Select possible interviewers for this stage"
+                                        options={filteredUserOptions}
+                                        onchange={handleInterviewersSelected}
+                                        size="3"
+                                        required>
+                </lightning-dual-listbox>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label="Interview Question Information">
+                <lightning-input type="search"
+                                label="Search Questions"
+                                onchange={filterQuestions}>
+                </lightning-input>
+                <lightning-dual-listbox name="questions"
+                                        class="validate"
+                                        label="Select Interview Questions"
+                                        source-label="Avaliable"
+                                        selected-label="Selected"
+                                        field-level-help="Select questions for this stage"
+                                        options={filteredQuestionOptions}
+                                        onchange={handleQuestionsSelected}
+                                        size="3"
+                                        required>
+                </lightning-dual-listbox>
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <div slot="footer">
+            <lightning-button variant="brand"
+                              label="Save"
+                              onclick={deepCreateStage}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

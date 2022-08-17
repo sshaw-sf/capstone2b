@@ -1,0 +1,4 @@
+<apex:page lightningStylesheets="true" standardController="Timecard__c">
+    <h1>Hello World</h1>
+    Welcome to {!Timecard__c.Name}! Your Project Manager is {!Timecard__c.Project_Manager__r.Name}
+</apex:page>

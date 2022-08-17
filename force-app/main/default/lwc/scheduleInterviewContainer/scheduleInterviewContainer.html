@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Schedule Interview">
+        <div slot="actions">
+            <lightning-button label="Cancel" 
+                              onclick={handleCancel} 
+                              slot="actions">
+            </lightning-button>
+            <lightning-button label="Create" 
+                              class="slds-var-p-left_small"
+                              variant="brand" 
+                              onclick={createScheduledInterview} 
+                              slot="actions">
+            </lightning-button>
+        </div>
+
+        <div class="slds-var-p-left_small slds-var-p-right_small">
+            <lightning-combobox label="Select Interview Stage"
+                                class="validate"
+                                value={stageId}
+                                placeholder="Select stage"
+                                options={stageOptions}
+                                onchange={handleStageChange}
+                                required>
+            </lightning-combobox>
+
+            <lightning-input type="datetime" 
+                             class="validate"
+                             name="input1"
+                             label="Select Interview Date/Time"
+                             onchange={handleDateChange}
+                             required>
+            </lightning-input>
+
+            <div class="slds-var-p-bottom_x-small">
+                <lightning-dual-listbox name="interviewers"
+                                        class="validate"
+                                        label="Select Interviewers"
+                                        source-label="Available"
+                                        selected-label="Selected"
+                                        field-level-help="Select from possible interviewers in selected interview stage"
+                                        options={interviewerOptions}
+                                        onchange={handleSelectedChange}
+                                        size="3"
+                                        required>
+                </lightning-dual-listbox>
+            </div>
+        </div>
+    </lightning-card>
+</template>

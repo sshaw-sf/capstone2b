@@ -1,0 +1,89 @@
+<template>
+    <lightning-button label="Deep Create Job Post" onclick={toggleModal}></lightning-button>
+    <template if:true={modalShown}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__close">
+                    <lightning-icon icon-name="utility:close" 
+                                    alternative-text="Close"
+                                    variant="inverse"  
+                                    title="Close" 
+                                    onclick={toggleModal}></lightning-icon>
+                </div>
+                <div class="slds-modal__header">
+                    <h1 class="slds-modal__title slds-hyphenate">Create Job Post</h1>
+                </div>
+                <div class="slds-modal__content">
+                    <lightning-record-edit-form object-api-name="Job_Posting__c">
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+                <div class="slds-modal__footer">
+                    <template if:true={nextShown}>
+                        <lightning-button label="Next" class="slds-var-p-right_small" onclick={toggleCreateStage}></lightning-button>
+                    </template>
+
+                    <lightning-button label="Save"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+       
+    <template if:true={secondModalShown}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__close">
+                    <lightning-icon icon-name="utility:close" 
+                                    alternative-text="Close"
+                                    variant="inverse"  
+                                    title="Close" 
+                                    onclick={toggleCreateStage}></lightning-icon>
+                </div>
+                <div class="slds-modal__header">
+                    <h1 class="slds-modal__title slds-hyphenate">Create Stage</h1>
+                </div>
+                <div class="slds-modal__content">
+                    <lightning-input type="text" 
+                         class="validate" 
+                         label="Stage Name" 
+                         onchange={handleStageNameChange} 
+                         required>
+        </lightning-input>
+        <lightning-input type="text" 
+                         label="Number of Interviewers" 
+                         placeholder={numInterviewers} 
+                         onchange={handleNumInterviewersChange}>
+        </lightning-input>
+        <lightning-dual-listbox name="interviewers"
+                                class="validate"
+                                label="Select Possible Interviewers"
+                                source-label="Available"
+                                selected-label="Selected"
+                                field-level-help="Select possible interviewers for this stage"
+                                options={interviewerOptions}
+                                onchange={handleInterviewersSelected}
+                                size="3"
+                                required>
+        </lightning-dual-listbox>
+        <lightning-dual-listbox name="questions"
+                                class="validate"
+                                label="Select Interview Questions"
+                                source-label="Avaliable"
+                                selected-label="Selected"
+                                field-level-help="Select questions for this stage"
+                                options={questionOptions}
+                                onchange={handleQuestionsSelected}
+                                size="3"
+                                required>
+        </lightning-dual-listbox>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button label="Save"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
+    

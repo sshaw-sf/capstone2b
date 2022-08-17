@@ -1,0 +1,14 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card>
+        <div class="slds-var-p-left_medium slds-var-p-right_medium">
+            <lightning-datatable columns={columns}
+                                 key-field="Id"
+                                 data={questionResponses}
+                                 onsave={handleSave}
+                                 draft-values={draftValues}
+                                 hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

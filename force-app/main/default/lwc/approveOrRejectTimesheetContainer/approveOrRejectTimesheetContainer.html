@@ -1,0 +1,17 @@
+<template>
+    <c-modal label="Approve or Reject Timecards">
+        <c-approve-or-reject-timesheets-table timesheets={timesheets}
+                                              onrejecttimesheets={handleRejectTimesheets}
+                                              onapprovetimesheets={handleApproveTimesheets}
+        ></c-approve-or-reject-timesheets-table>
+    </c-modal>
+    <c-modal label="Create New Timesheet">
+        <lightning-record-edit-form object-api-name="Timesheet__c" 
+                                    onsuccess={handleSuccess}>
+                                    
+            <lightning-input-field field-name="Timesheet_Status__c"></lightning-input-field>
+            <lightning-input-field field-name="Project__c"></lightning-input-field>
+            <lightning-button label="Save" variant="brand" type="submit"></lightning-button>
+        </lightning-record-edit-form>
+    </c-modal>
+</template>
