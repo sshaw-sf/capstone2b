@@ -34,6 +34,7 @@ public with sharing class InterviewStageGenerator {
 
             insert newPossibleInterviewers;
         } catch (Exception e) {
+            //maybe specify exception to get more in depth message
             throw new AuraHandledException(e.getMessage());
         }
     }

@@ -41,11 +41,12 @@ public with sharing class QuestionResponseGenerator {
 
     @AuraEnabled
     public static string updateQuestionResponses(Object data){
-        List<Question_Response__c> questionResponsesToUpdate = (List<Question_Response__c>) JSON.deserialize(
-            JSON.serialize(data),
-            List<Question_Response__c>.class
-       );
         try {
+            List<Question_Response__c> questionResponsesToUpdate = (List<Question_Response__c>) JSON.deserialize(
+                JSON.serialize(data),
+                List<Question_Response__c>.class
+           );
+
             update questionResponsesToUpdate;
             return 'Success: question responses updated successfully';
         } catch (Exception e) {

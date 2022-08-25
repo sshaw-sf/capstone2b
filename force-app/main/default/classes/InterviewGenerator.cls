@@ -21,6 +21,7 @@ public with sharing class InterviewGenerator {
     @AuraEnabled
     public static List<User> getInterviewerUsername(List<Id> userIds){
         try {
+            //getRecords? for user 
             return [SELECT Id, FirstName, LastName
                     FROM User
                     WHERE Id IN :userIds];

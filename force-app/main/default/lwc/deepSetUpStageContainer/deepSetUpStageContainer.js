@@ -118,6 +118,7 @@ export default class DeepSetUpStageContainer extends LightningElement {
         }
     }
 
+    //check out record edit form or record form 
     isInputValid() {
         let isValid = true; 
         let inputFields = this.template.querySelectorAll('.validate');
